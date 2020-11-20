@@ -11,33 +11,33 @@
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
 
-// 1
-var campoMinato= []
-for (var i = 0; i < 15; i++) {
-  var bombe = randomNumber(1,100)
-  campoMinato.push(bombe)
-}
-console.log(campoMinato)
-
-for (var i = 0; i < 83; i++) {
-  numeriUtente= parseInt(prompt('Inserisci un numero compreso tra 1 e 100'))
-  if (numeriUtente) {
-
-}
-
 //------------------------------------------------------------
 function randomNumber(min, max)  {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * max) + min;
 }
 
-function control(array, numero) {
-  var esito = -1;
-  var i = 0;
-  while ( i < array.lenght && esito == -1) {
-      if (numero == array[i]) {
-          alert('Hai perso')
-      }
-    i++
+function control (array, numero) {
+  var check = false;
+  for (var i = 0; i < array.length;  i++) {
+    if (numero==array[i]) {
+      check = true;
+      return check;
+    }
   }
-  return esito;
+  return check;
+}
+//------------------------------------------------------------
+
+// 1
+var campoMinato = [];
+var numeroMassimoTentativi = 100 - 16;
+var tentativiUtente = [];
+
+while (campoMinato.lenght < 16) {
+  var bombe = randomNumber(1,100);
+  var checkNumber = control(campoMinato, bombe)
+  if (checkNumber == false) {
+    campoMinato.push(bombe)
+    console.log(campoMinato);
+  }
 }
