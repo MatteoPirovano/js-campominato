@@ -16,7 +16,7 @@ function randomNumber(min, max)  {
   return Math.floor(Math.random() * max) + min;
 }
 
-function control (array, numero) {
+function controllo (array, numero) {
   var check = false;
   for (var i = 0; i < array.length;  i++) {
     if (numero==array[i]) {
@@ -31,13 +31,27 @@ function control (array, numero) {
 // 1
 var campoMinato = [];
 var numeroMassimoTentativi = 100 - 16;
+numeroMassimoTentativi = 5;
 var tentativiUtente = [];
 
-while (campoMinato.lenght < 16) {
+var i =0;
+while (campoMinato.length < 16) {
   var bombe = randomNumber(1,100);
-  var checkNumber = control(campoMinato, bombe)
+  console.log('Numero casuale' , bombe)
+  var checkNumber = controllo(campoMinato, bombe);
   if (checkNumber == false) {
-    campoMinato.push(bombe)
-    console.log(campoMinato);
+    campoMinato.push(bombe);
   }
 }
+console.log(campoMinato);
+
+var i=0;
+while (tentativiUtente.lenght < 5) {
+  var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
+  console.log('numero utente' , numeroUtente);
+  var checkNumber = controllo(tentativiUtente, numeroUtente );
+  if (checkNumber == false) {
+    tentativiUtente.push(numeroUtente);
+  }
+}
+console.log(tentativiUtente);
